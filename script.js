@@ -5,10 +5,12 @@ var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 var characterSelect = function(charString) {
+
+  // retreiving the string length
   var strLength = charString.length;
-
+  // randomly selecting a position within the string to include in the password
   var charPosition = Math.floor(Math.random()*strLength);
-
+  // returning the character randomly selected by charPosition
   return charString.charAt(charPosition);
 
 }
@@ -20,27 +22,23 @@ var chooseCriteria = function(characterType) {
 var generatePassword = function() {
   window.alert("Let's first choose the password criteria:");
 
+  // set up variables for criteria selection and initializing them to false to
+  // trigger the first while-loop execution
   var containsLowerCase = false;
-
   var containsUpperCase = false;
-
   var containsNumeric = false;
-
   var containsSpecialChars = false;
 
   // this loop will ensure are least one character type is selected
   while (!containsLowerCase && !containsUpperCase && !containsNumeric && !containsSpecialChars) {
 
 
-    var containsLowerCase = chooseCriteria("lowercase");
+    containsLowerCase = chooseCriteria("lowercase");    
+    containsUpperCase = chooseCriteria("uppercase");    
+    containsNumeric = chooseCriteria("numeric");    
+    containsSpecialChars = chooseCriteria("special");
     
-    var containsUpperCase = chooseCriteria("uppercase");
-    
-    var containsNumeric = chooseCriteria("numeric");
-    
-    var containsSpecialChars = chooseCriteria("special");
-    
-    window.alert("Here is a recap of your new password criteria: ");
+    window.alert("Here is a recap of your new password criteria:");
     
     if (containsLowerCase) {
       window.alert("The password will include lowercase characters.");
@@ -77,13 +75,15 @@ var generatePassword = function() {
   }
 
 
-  var passwordLength = window.prompt("How long would you like the password to be? Please choose between 8 and 128 characters.");
+  // var passwordLength = window.prompt("How long would you like the password to be? Please choose between 8 and 128 characters.");
 
-  while (passwordLength < 8 || passwordLength > 128) {
-    passwordLength = window.prompt("Invalid entry. How long would you like the password to be? Please choose between 8 and 128 characters.");
-  }
+  // while (passwordLength < 8 || passwordLength > 128) {
+  //   passwordLength = window.prompt("Invalid entry. How long would you like the password to be? Please choose between 8 and 128 characters.");
+  // }
+  var passwordLength = 8;
 
   var passwordStr = "";
+
   var includedLowerCase = false;
   var includedUpperCase = false;
   var includedNumbers = false;
@@ -107,33 +107,6 @@ var generatePassword = function() {
       passwordStr = passwordStr + characterSelect(specialChar);
       includedSpecialChar = true;
     } 
-
-    // switch(charType) {
-    //   // lowercase
-    //   case 0: // select random number to choose position of the character
-    //     // charPosition = Math.floor(Math.random()*lowerCase.length);
-    //     // passwordStr = passwordStr + lowerCase.charAt(charPosition);
-    //     passwordStr = passwordStr + characterSelect(lowerCase);
-    //     break;
-    //   // uppercase
-    //   case 1: 
-    //   // charPosition = Math.floor(Math.random()*upperCase.length);
-    //   // passwordStr = passwordStr + upperCase.charAt(charPosition);
-    //     passwordStr = passwordStr + characterSelect(upperCase);
-    //   break;
-    //   // numbers
-    //   case 2:
-    //     // charPosition = Math.floor(Math.random()*numericChar.length);
-    //     // passwordStr = passwordStr + numericChar.charAt(charPosition);
-    //       passwordStr = passwordStr + characterSelect(numericChar);
-    //     break;
-    //   // special character
-    //   case 3:
-    //     // charPosition = Math.floor(Math.random()*specialChar.length);
-    //     // passwordStr = passwordStr + specialChar.charAt(charPosition);
-    //     passwordStr = passwordStr + characterSelect(specialChar);
-    //     break;
-    // }
 
 
   }
