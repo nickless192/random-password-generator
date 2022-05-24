@@ -30,6 +30,8 @@ THEN the password is either displayed in an alert or written to the page<br />
 ## Screenshot of Deployed Site
  ![Password Generator Landing Page](./assets/images/random-password-generator-screenshot.png)
 
+ ![Randomly Generated Password](./assets/images/randomly-generated-password.png)
+
 ## Links
 
 GitHub link: https://github.com/nickless192/random-password-generator
