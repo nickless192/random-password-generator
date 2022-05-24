@@ -75,12 +75,11 @@ var generatePassword = function() {
   }
 
 
-  // var passwordLength = window.prompt("How long would you like the password to be? Please choose between 8 and 128 characters.");
+  var passwordLength = window.prompt("How long would you like the password to be? Please choose between 8 and 128 characters.");
 
-  // while (passwordLength < 8 || passwordLength > 128) {
-  //   passwordLength = window.prompt("Invalid entry. How long would you like the password to be? Please choose between 8 and 128 characters.");
-  // }
-  var passwordLength = 8;
+  while (passwordLength < 8 || passwordLength > 128) {
+    passwordLength = window.prompt("Invalid entry. How long would you like the password to be? Please choose between 8 and 128 characters.");
+  }
 
   var passwordStr = "";
 
