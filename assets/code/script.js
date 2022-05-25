@@ -32,12 +32,13 @@ var generatePassword = function() {
   // this loop will ensure are least one character type is selected
   while (!containsLowerCase && !containsUpperCase && !containsNumeric && !containsSpecialChars) {
 
-
+    // using chooseCriteria() to prompt use for password criteria
     containsLowerCase = chooseCriteria("lowercase");    
     containsUpperCase = chooseCriteria("uppercase");    
     containsNumeric = chooseCriteria("numeric");    
     containsSpecialChars = chooseCriteria("special");
     
+    // recap of the chosen criteria
     window.alert("Here is a recap of your new password criteria:");
     
     if (containsLowerCase) {
@@ -74,14 +75,17 @@ var generatePassword = function() {
     }
   }
 
-
+  // prompt for desired password length
   var passwordLength = window.prompt("How long would you like the password to be? Please choose between 8 and 128 characters.");
 
+  // ensuring the password length is between 8 and 128, if not, reprompt for password length
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = window.prompt("Invalid entry. How long would you like the password to be? Please choose between 8 and 128 characters.");
   }
 
+  // passwordStr will hold the proposed new password
   var passwordStr = "";
+  var isCriteriaSatisfied = false;
 
   var includedLowerCase = false;
   var includedUpperCase = false;
@@ -89,7 +93,8 @@ var generatePassword = function() {
   var includedSpecialChar = false;
 
   //debugger;
-  //for (var i = 0; i < passwordLength; i++) {
+
+  // loop until passwordStr is of the chosen length
   while (passwordStr.length < passwordLength) {
     var charType = Math.floor(Math.random()*4);
 
@@ -106,11 +111,33 @@ var generatePassword = function() {
       passwordStr = passwordStr + characterSelect(specialChar);
       includedSpecialChar = true;
     } 
+    // halfway through the while-loop check that all criteria has been satified
+    if (passwordStr.length === Math.floor(passwordLength/2) && !isCriteriaSatisfied ) {
+      // checking if lowercase characters were already part of the password and if it's required that they are
+      if (!includedLowerCase && containsLowerCase) {
+        passwordStr = passwordStr + characterSelect(lowerCase);
+      }
+      // checking if uppercase characters were already part of the password and if it's required that they are
+      if (!includedUpperCase && containsUpperCase) {
+        passwordStr = passwordStr + characterSelect(upperCase);
+      }
+      // checking if numeric characters were already part of the password and if it's required that they are
+      if (!includedNumbers && containsNumeric) {
+        passwordStr = passwordStr + characterSelect(numericChar);
+      }
+      // checking if special characters were already part of the password and if it's required that they are
+      if (!includedSpecialChar && containsSpecialChars) {
+        passwordStr = passwordStr + characterSelect(specialChar);
+      }
+      // once we reach here, all criteria should be satisfied; set to true to prevent this stream of code from executing again
+      isCriteriaSatisfied = true;
+    }
 
 
   }
-
+  // alert user of the new passwrd
   window.alert("The password is " + passwordStr);
+  // return passwordStr so it's displayed by the writePassword() function
   return passwordStr;
 
 }
