@@ -40,8 +40,11 @@ WHEN the password is generated<br />
 THEN the password is either displayed in an alert or written to the page<br />
 
 ## Screenshot of Deployed Site
+
+### Password Generator Landing Page
  ![Password Generator Landing Page](./assets/images/random-password-generator-screenshot.png)
 
+### Randomly Generated Password
  ![Randomly Generated Password](./assets/images/randomly-generated-password.png)
 
 ## Links
