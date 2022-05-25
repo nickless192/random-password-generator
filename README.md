@@ -2,6 +2,18 @@
 
 ## Description
 
+Our Random Password Generator will generate a new password for our users after pressing the "Generate Password" button. This triggers a series of prompts to be displayed to the user. The user will need to confirm if the new password will include:
+
+* Lowercase characters
+* Uppercase characters
+* Numeric characters
+* Special characters
+
+Upon responding to these 4 prompts, then the tool will show prompts confirming the chosen criteria. If no character types are included, then the program will alert the user that at least one criteria should be selected, and the user will be prompted again to make their selections. Once this condition is satisfied, then the user will be prompted to select the password length, which should be between 8 and 128 characters. If the desired length is not within these parameters, the user will be prompted again until a valid answer is provided. Once all prompts are answered, then the password generator starts working: it will loop through the different character type lists and select a random character from the list. This random character is then appended to a string, initially blank, until the full password is generated.
+
+Halfway through this process, the generator will perform a check: based on which character types the user requested to include in the password, it will determine if any of them is still pending to be included in the password. If any of them is still not included, it will force to randomly choose a character from these missing character types to append to the password. For instance, if the user wants to have numbers but halfway through there are no numbers included yet, then a random number is chosen and added to the password. This check is only performed **once** through the password generation process.
+
+Once the generated password is of the desired length, then it is shown to the user as a window alert and then it is written to the website. If a new password is needed, just push the button :smile:
 
 ## User Story
 
